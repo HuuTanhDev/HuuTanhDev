@@ -1,38 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const audio = document.getElementById("background-audio");
-    const toggleButton = document.getElementById("toggle-audio");
+// FPS Counter
+let lastTime = performance.now();
+let frameCount = 0;
 
-    // Bắt đầu với nhạc bật
-    audio.play().catch((error) => {
-        console.log("Trình duyệt chặn tự động phát nhạc:", error);
-    });
-
-    // Nút bật/tắt nhạc
-    toggleButton.addEventListener("click", () => {
-        if (audio.paused) {
-            audio.play();
-            toggleButton.textContent = "Tắt nhạc";
-        } else {
-            audio.pause();
-            toggleButton.textContent = "Bật nhạc";
-        }
-    });
-
-    // Hiệu ứng lá rơi
-    const leafContainer = document.getElementById("leaf-container");
-    function createLeaf() {
-        const leaf = document.createElement("div");
-        leaf.classList.add("leaf");
-        leaf.style.left = Math.random() * 100 + "vw";
-        leaf.style.animationDuration = Math.random() * 5 + 5 + "s";
-        leafContainer.appendChild(leaf);
-
-        // Xóa lá sau khi rơi xong
-        setTimeout(() => {
-            leaf.remove();
-        }, 10000);
+function updateFPS() {
+    const now = performance.now();
+    frameCount++;
+    if (now - lastTime >= 1000) {
+        const fps = frameCount;
+        document.getElementById('fps').textContent = `FPS: ${fps}`;
+        frameCount = 0;
+        lastTime = now;
     }
+    requestAnimationFrame(updateFPS);
+}
 
-    // Tạo lá rơi liên tục
-    setInterval(createLeaf, 500);
-});
+updateFPS();
+
+// Time Display
+function updateTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+
+// Autoplay music (already handled in HTML with autoplay attribute)
