@@ -1,151 +1,162 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Cá Nhân - [Tên Bạn]</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            padding: 50px;
-            color: #333;
-            transition: background-color 0.5s;
-        }
-        .profile-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        #avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid #007bff;
-        }
-        #clock {
-            font-size: 1.8em;
-            margin: 15px 0;
-            color: #007bff;
-        }
-        #fps {
-            font-size: 1.2em;
-            color: #28a745;
-        }
-        .music-controls {
-            margin-top: 20px;
-        }
-        select, button {
-            padding: 10px;
-            margin: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-            color: white;
-        }
-        .info {
-            margin: 10px 0;
-            font-size: 1.1em;
-        }
-        .link {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .link:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ThanhDieu Home</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0f0f1a, #1a1a2e);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #c084fc;
+    }
+
+    .quote {
+      font-style: italic;
+      margin: 1rem 0;
+    }
+
+    .avatar {
+      border-radius: 50%;
+      border: 6px solid #8b5cf6;
+      width: 150px;
+      height: 150px;
+      background-image: url('https://via.placeholder.com/150');
+      background-size: cover;
+      background-position: center;
+      margin: 1rem auto;
+      box-shadow: 0 0 20px #a78bfa;
+    }
+
+    .info {
+      margin-top: 1rem;
+    }
+
+    .bio {
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .clock {
+      font-size: 1rem;
+      margin-top: 1rem;
+      color: #ccc;
+    }
+
+    .falling-leaves {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Red_Leaf_Icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .music-section {
+      margin-top: 3rem;
+      padding: 1rem;
+    }
+
+    .songs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .song iframe {
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="profile-container">
-        <img id="avatar" src="https://via.placeholder.com/150" alt="Ảnh đại diện">
-        <h1>[Tên Bạn]</h1>
-        <div class="info">Nghề nghiệp: [VD: Lập trình viên]</div>
-        <div class="info">GitHub: <a href="https://github.com/[username]" class="link" target="_blank">[username]</a></div>
-        <div id="clock">Đang tải giờ Hà Nội...</div>
-        <div id="fps">FPS: 0</div>
+  <div class="falling-leaves" id="leaves"></div>
 
-        <!-- Điều khiển nhạc -->
-        <div class="music-controls">
-            <select id="music-selector">
-                <option value="">Chọn bài nhạc remix</option>
-                <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Remix 1 - Electro Beat</option>
-                <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Remix 2 - Synth Wave</option>
-                <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Remix 3 - Chill Trap</option>
-                <option value="https://example.com/remix-vietnam.mp3">Remix 4 - V-Pop Chill (Placeholder)</option>
-            </select>
-            <button onclick="playPauseMusic()">Phát</button>
-        </div>
+  <div class="container">
+    <h1>ThanhDieu Home</h1>
+    <div class="avatar"></div>
+    <h2>Vuong Thanh Dieu <span style="color: #3b82f6;">✔</span></h2>
+    <p class="quote">"Lời nói gió bay, hứa càng hay chia tay càng đau..."</p>
+    <div class="info">
+      <p>Vietnam / Ho Chi Minh City | <a href="#" style="color: #a5b4fc;">My Github</a></p>
     </div>
+    <div class="bio">
+      <strong>Developer / Designer / <del>Vexer</del></strong>
+      <p>Hello, my name is ThanhDieu. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
+    </div>
+    <div class="clock" id="clock"></div>
+  </div>
 
-    <script>
-        // Cập nhật giờ Hà Nội
-        function updateHanoiTime() {
-            const now = new Date();
-            const hanoiTime = new Intl.DateTimeFormat('vi-VN', {
-                timeZone: 'Asia/Ho_Chi_Minh',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            }).format(now);
-            document.getElementById('clock').textContent = `Giờ Hà Nội: ${hanoiTime}`;
-        }
-        setInterval(updateHanoiTime, 1000);
-        updateHanoiTime();
+  <div class="music-section">
+    <h2>My Playlist</h2>
+    <div class="songs">
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/ktvTqknDobU" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/60ItHLz5WEA" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/fLexgOxsZu0" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/OPf0YbXqDm0" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/RgKAFK5djSk" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/YQHsXMglC9A" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/uelHwf8o7_U" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/JGwWNGJdvx8" allowfullscreen></iframe></div>
+      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/kXYiU_JCYtU" allowfullscreen></iframe></div>
+    </div>
+  </div>
 
-        // Tính FPS
-        let lastTime = performance.now();
-        let frameCount = 0;
-        let fps = 0;
+  <script>
+    // Live clock
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString();
+      document.getElementById('clock').textContent = time;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-        function updateFPS() {
-            const currentTime = performance.now();
-            frameCount++;
-            const delta = (currentTime - lastTime) / 1000;
-            if (delta >= 1) {
-                fps = frameCount / delta;
-                document.getElementById('fps').textContent = `FPS: ${Math.round(fps)}`;
-                frameCount = 0;
-                lastTime = currentTime;
-            }
-            requestAnimationFrame(updateFPS);
-        }
-        requestAnimationFrame(updateFPS);
-
-        // Điều khiển nhạc
-        const music = document.getElementById('background-music');
-        const musicSelector = document.getElementById('music-selector');
-
-        function playPauseMusic() {
-            if (music.paused && music.src) {
-                music.play();
-                event.target.textContent = 'Tạm dừng';
-            } else {
-                music.pause();
-                event.target.textContent = 'Phát';
-            }
-        }
-
-        musicSelector.addEventListener('change', (e) => {
-            if (e.target.value) {
-                music.src = e.target.value;
-                music.play();
-                document.querySelector('button').textContent = 'Tạm dừng';
-            }
-        });
-    </script>
-
-    <audio id="background-music"></audio>
+    // Falling leaves
+    const leafCount = 20;
+    const leavesContainer = document.getElementById('leaves');
+    for (let i = 0; i < leafCount; i++) {
+      const leaf = document.createElement('div');
+      leaf.className = 'leaf';
+      leaf.style.left = Math.random() * 100 + 'vw';
+      leaf.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      leaf.style.top = -Math.random() * 100 + 'px';
+      leavesContainer.appendChild(leaf);
+    }
+  </script>
 </body>
 </html>
