@@ -17,4 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleButton.textContent = "Bật nhạc";
         }
     });
+
+    // Hiệu ứng lá rơi
+    const leafContainer = document.getElementById("leaf-container");
+    function createLeaf() {
+        const leaf = document.createElement("div");
+        leaf.classList.add("leaf");
+        leaf.style.left = Math.random() * 100 + "vw";
+        leaf.style.animationDuration = Math.random() * 5 + 5 + "s";
+        leafContainer.appendChild(leaf);
+
+        // Xóa lá sau khi rơi xong
+        setTimeout(() => {
+            leaf.remove();
+        }, 10000);
+    }
+
+    // Tạo lá rơi liên tục
+    setInterval(createLeaf, 500);
 });
