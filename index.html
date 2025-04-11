@@ -32,9 +32,18 @@
             <p>Developer / Designer / Vexer</p>
             <p>Hello, my name is NguyenHuuTanh. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
         </div>
-        <!-- Thêm phần danh sách bài hát -->
         <div class="music-section">
             <h3>My Favorite Songs</h3>
+            <!-- Thêm trình phát nhạc -->
+            <div class="music-player">
+                <audio id="backgroundMusic" muted>
+                    <source src="hoa-co-lau.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <button id="playButton" onclick="togglePlay()">
+                    <i class="fas fa-play"></i> Play Music
+                </button>
+            </div>
             <ul class="song-list">
                 <li>
                     <a href="https://zingmp3.vn/bai-hat/Hoa-Co-Lau-Phong-Max/Z6AIA0I8.html" target="_blank">
@@ -73,5 +82,29 @@
     <div class="leaf leaf2"></div>
     <div class="leaf leaf3"></div>
     <div class="leaf leaf4"></div>
+
+    <!-- Thêm JavaScript để điều khiển phát nhạc -->
+    <script>
+        const audio = document.getElementById('backgroundMusic');
+        const playButton = document.getElementById('playButton');
+        let isPlaying = false;
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playButton.innerHTML = '<i class="fas fa-play"></i> Play Music';
+            } else {
+                audio.muted = false; // Bật âm thanh khi người dùng nhấp
+                audio.play();
+                playButton.innerHTML = '<i class="fas fa-pause"></i> Pause Music';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Tự động phát nhạc (muted) khi trang tải
+        window.onload = function() {
+            audio.play();
+        };
+    </script>
 </body>
 </html>
