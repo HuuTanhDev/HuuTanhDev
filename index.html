@@ -3,93 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Cá Nhân - [Tên Bạn]</title>
+    <title>Profile Cá Nhân</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #f0f0f0;
             padding: 50px;
-            color: #333;
-            transition: background-color 0.5s;
-        }
-        .profile-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        #avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid #007bff;
         }
         #clock {
-            font-size: 1.8em;
-            margin: 15px 0;
-            color: #007bff;
-        }
-        #fps {
-            font-size: 1.2em;
-            color: #28a745;
-        }
-        .music-controls {
+            font-size: 2em;
             margin-top: 20px;
+            color: #333;
         }
-        select, button {
-            padding: 10px;
-            margin: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-            color: white;
-        }
-        .info {
-            margin: 10px 0;
-            font-size: 1.1em;
-        }
-        .link {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .link:hover {
-            text-decoration: underline;
+        .profile {
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="profile-container">
-        <img id="avatar" src="https://via.placeholder.com/150" alt="Ảnh đại diện">
-        <h1>[Tên Bạn]</h1>
-        <div class="info">Nghề nghiệp: [VD: Lập trình viên]</div>
-        <div class="info">GitHub: <a href="https://github.com/[username]" class="link" target="_blank">[username]</a></div>
-        <div id="clock">Đang tải giờ Hà Nội...</div>
-        <div id="fps">FPS: 0</div>
-
-        <!-- Điều khiển nhạc -->
-        <div class="music-controls">
-            <select id="music-selector">
-                <option value="">Chọn bài nhạc remix</option>
-                <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Remix 1 - Electro Beat</option>
-                <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Remix 2 - Synth Wave</option>
-                <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Remix 3 - Chill Trap</option>
-                <option value="https://example.com/remix-vietnam.mp3">Remix 4 - V-Pop Chill (Placeholder)</option>
-            </select>
-            <button onclick="playPauseMusic()">Phát</button>
-        </div>
+    <div class="profile">
+        <h1>Nguyễn Hữu Tánh</h1>
+        <p>Nguyễn Hữu Tánh Dev Nhận Code All Website
+  Website</p>
     </div>
+    <div id="clock">Đang tải giờ Hà Nội...</div>
+
+    <!-- Nhạc nền -->
+    <audio id="background-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ âm thanh.
+    </audio>
+    <button onclick="toggleMusic()">Bật/Tắt Nhạc</button>
 
     <script>
-        // Cập nhật giờ Hà Nội
+        // Hàm cập nhật giờ Hà Nội
         function updateHanoiTime() {
             const now = new Date();
             const hanoiTime = new Intl.DateTimeFormat('vi-VN', {
@@ -101,51 +49,22 @@
             }).format(now);
             document.getElementById('clock').textContent = `Giờ Hà Nội: ${hanoiTime}`;
         }
+
+        // Cập nhật giờ mỗi giây
         setInterval(updateHanoiTime, 1000);
         updateHanoiTime();
 
-        // Tính FPS
-        let lastTime = performance.now();
-        let frameCount = 0;
-        let fps = 0;
-
-        function updateFPS() {
-            const currentTime = performance.now();
-            frameCount++;
-            const delta = (currentTime - lastTime) / 1000;
-            if (delta >= 1) {
-                fps = frameCount / delta;
-                document.getElementById('fps').textContent = `FPS: ${Math.round(fps)}`;
-                frameCount = 0;
-                lastTime = currentTime;
-            }
-            requestAnimationFrame(updateFPS);
-        }
-        requestAnimationFrame(updateFPS);
-
-        // Điều khiển nhạc
+        // Hàm điều khiển nhạc
         const music = document.getElementById('background-music');
-        const musicSelector = document.getElementById('music-selector');
-
-        function playPauseMusic() {
-            if (music.paused && music.src) {
+        function toggleMusic() {
+            if (music.paused) {
                 music.play();
-                event.target.textContent = 'Tạm dừng';
+                event.target.textContent = 'Tắt Nhạc';
             } else {
                 music.pause();
-                event.target.textContent = 'Phát';
+                event.target.textContent = 'Bật Nhạc';
             }
         }
-
-        musicSelector.addEventListener('change', (e) => {
-            if (e.target.value) {
-                music.src = e.target.value;
-                music.play();
-                document.querySelector('button').textContent = 'Tạm dừng';
-            }
-        });
     </script>
-
-    <audio id="background-music"></audio>
 </body>
 </html>
