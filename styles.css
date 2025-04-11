@@ -117,6 +117,30 @@ h2 .verified {
     margin-bottom: 15px;
 }
 
+/* Music Player Styles */
+.music-player {
+    margin-bottom: 20px;
+}
+
+#backgroundMusic {
+    display: none; /* Ẩn trình phát mặc định của audio */
+}
+
+#playButton {
+    background-color: #a855f7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#playButton:hover {
+    background-color: #3b82f6;
+}
+
 .song-list {
     list-style: none;
     padding: 0;
