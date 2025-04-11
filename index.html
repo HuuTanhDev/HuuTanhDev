@@ -3,58 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HuuTanh Profile</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Profile Cá Nhân</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 50px;
+            color: #333;
+        }
+        #clock {
+            font-size: 1.8em;
+            margin: 20px 0;
+        }
+        #fps {
+            font-size: 1.2em;
+            color: #007bff;
+        }
+        .profile {
+            margin-bottom: 20px;
+        }
+        .music-controls {
+            margin-top: 20px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <!-- Video nền -->
-    <video autoplay muted loop id="background-video">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-        Trình duyệt của bạn không hỗ trợ video.
-    </video>
-
-    <!-- Lớp phủ để làm mờ video nền -->
-    <div class="overlay"></div>
-
-    <!-- Hiệu ứng lá rơi -->
-    <div id="leaf-container"></div>
-
-    <!-- FPS và Giờ -->
-    <div class="stats">
-        <div id="fps-counter">FPS: 0</div>
-        <div id="clock">00:00:00</div>
+    <div class="profile">
+        <h1>Nguyễn Hữu Tánh</h1>
+        <p>Nguyễn Hữu Tánh Dev Nhận Code All Website</p>
     </div>
+    <div id="clock">Đang tải giờ Hà Nội...</div>
+    <div id="fps">FPS: 0</div>
 
-    <!-- Nội dung chính -->
-    <div class="container">
-        <header>
-            <div class="avatar-container">
-                <img src="https://via.placeholder.com/150" alt="Ảnh đại diện" class="avatar">
-            </div>
-            <h1>Nguyễn Hữu Tánh <i class="fas fa-check-circle verified"></i></h1>
-            <p class="tagline">Nguyễn Hữu Tánh Dev</p>
-            <div class="info">
-                <p><i class="fas fa-map-marker-alt"></i> Vietnam / Ho Chi Minh City</p>
-                <p><i class="fab fa-github"></i> <a href="https://github.com" target="_blank">My GitHub</a></p>
-            </div>
-            <!-- Nút điều khiển nhạc -->
-            <button id="toggle-audio" class="audio-btn">Tắt nhạc</button>
-        </header>
-
-        <section class="bio">
-            <h2>Bio</h2>
-            <p>Developer / Designer / Vexer</p>
-            <p>Hello, my name is ThanhDieu. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
-        </section>
+    <!-- Điều khiển nhạc -->
+    <div class="music-controls">
+        <select id="music-selector">
+            <option value="">Chọn bài nhạc remix</option>
+            <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Remix 1 - Electro Beat</option>
+            <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Remix 2 - Synth Wave</option>
+            <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Remix 3 - Chill Trap</option>
+        </select>
+        <button onclick="playPauseMusic()">Phát/Tạm dừng</button>
     </div>
 
     <!-- Nhạc nền -->
-    <audio id="background-audio" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-        Trình duyệt của bạn không hỗ trợ âm thanh.
-    </audio>
+    <audio id="background-music"></audio>
 
-    <script src="script.js"></script>
+    <script>
+        // Cập nhật giờ Hà Nội
+        function updateHanoiTime() {
+            const now = new Date();
+            const hanoiTime = new Intl.DateTimeFormat('vi-VN', {
+                timeZone: 'Asia/Ho_Chi_Minh',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            }).format(now);
+            document.getElementById('clock').textContent = `Giờ Hà Nội: ${hanoiTime}`;
+        }
+        setInterval(updateHanoiTime, 1000);
+        updateHanoiTime();
+
+        // Tính FPS
+        let lastTime = performance.now();
+        let frameCount = 0;
+        let fps = 0;
+
+        function updateFPS() {
+            const currentTime = performance.now();
+            frameCount++;
+            const delta = (currentTime - lastTime) / 1000; // Thời gian chênh lệch (giây)
+            if (delta >= 1) { // Cập nhật mỗi giây
+                fps = frameCount / delta;
+                document.getElementById('fps').textContent = `FPS: ${Math.round(fps)}`;
+                frameCount = 0;
+                lastTime = currentTime;
+            }
+            requestAnimationFrame(updateFPS);
+        }
+        requestAnimationFrame(updateFPS);
+
+        // Điều khiển nhạc
+        const music = document.getElementById('background-music');
+        const musicSelector = document.getElementById('music-selector');
+
+        function playPauseMusic() {
+            if (music.paused && music.src) {
+                music.play();
+                event.target.textContent = 'Tạm dừng';
+            } else {
+                music.pause();
+                event.target.textContent = 'Phát';
+            }
+        }
+
+        musicSelector.addEventListener('change', (e) => {
+            if (e.target.value) {
+                music.src = e.target.value;
+                music.play();
+                document.querySelector('button').textContent = 'Tạm dừng';
+            }
+        });
+    </script>
 </body>
 </html>
