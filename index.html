@@ -71,28 +71,6 @@
         opacity: 0;
       }
     }
-
-    .playlist {
-      text-align: left;
-      max-width: 600px;
-      margin: 2rem auto;
-      background: rgba(255,255,255,0.03);
-      padding: 1rem;
-      border-radius: 10px;
-    }
-
-    .playlist h3 {
-      text-align: center;
-    }
-
-    .playlist ul {
-      list-style: none;
-      padding-left: 1rem;
-    }
-
-    .playlist li {
-      padding: 5px 0;
-    }
   </style>
 </head>
 <body>
@@ -113,53 +91,43 @@
     <div class="clock" id="clock"></div>
   </div>
 
-  <!-- PLAYLIST -->
-  <div class="playlist">
-    <h3>Danh sách nhạc</h3>
-    <ul>
-      <li>1. Đừng Lo Nhé Có Anh Đây</li>
-      <li>2. Hoa Cỏ Lau</li>
-      <li>3. Yêu Bản Thân</li>
-      <li>4. Lướt Sóng Đạp Mây</li>
-      <li>5. Có Một Người Vẫn Đợi</li>
-      <li>6. Có Duyên Không Nợ</li>
-      <li>7. Khúc Vương Tình</li>
-      <li>8. Kiếp Má Hồng</li>
-      <li>9. Em Vội Quên</li>
-      <li>10. Anh Thương Em Em Thương Ai</li>
-      <li>11. Ngày Em Cưới</li>
-      <li>12. Yêu Và Thương Khó Quá</li>
-      <li>13. Có Lẽ Bên Nhau Là Sai</li>
-      <li>14. Tát Nhật Lãng Rực Rỡ</li>
-      <li>15. Vở Kịch Của Em</li>
-      <li>16. Người Thay Thế Em</li>
-      <li>17. Lý Do Là Gì</li>
-      <li>18. Phận Em Ai Thương Hại</li>
-      <li>19. Ngày Em Đẹp Nhất</li>
-      <li>20. Quá Khứ Anh Không Thể Quên</li>
-    </ul>
-  </div>
-
-  <!-- AUTOPLAY MUSIC (link mẫu - bạn có thể thay bằng file MP3 bạn có) -->
-  <audio autoplay loop hidden>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    Trình duyệt không hỗ trợ phát nhạc.
-  </audio>
+  <!-- MÁY PHÁT NHẠC TỰ ĐỘNG (ẩn) -->
+  <audio id="audio" autoplay loop hidden></audio>
 
   <script>
-    // Đồng hồ thời gian thực
+    // Danh sách các bài hát (link MP3 từ zingmp3.vn không thể phát trực tiếp)
+    const playlist = [
+      'https://vnso-zn-5-tf-mp3-s1-zmp3.zmdcdn.me/d191947ab48e1b6c6aafa7eb76c074c8?authen=exp=1712841400~acl=/d191947ab48e1b6c6aafa7eb76c074c8/*~hmac=abc123&filename=Hoa-Co-Lau-Phong-Max.mp3',
+      'https://example.com/khuc-vuong-tinh.mp3',
+      'https://example.com/anh-thuong-em.mp3',
+      'https://example.com/ngay-em-cuoi.mp3',
+      'https://example.com/vo-kich-cua-em.mp3',
+      'https://example.com/gio-remix.mp3'
+    ];
+
+    const audio = document.getElementById('audio');
+    let current = 0;
+
+    function playNext() {
+      audio.src = playlist[current];
+      audio.play().catch(e => console.log("Tự động phát bị chặn:", e));
+      current = (current + 1) % playlist.length;
+    }
+
+    audio.addEventListener('ended', playNext);
+    window.addEventListener('load', playNext);
+
+    // Đồng hồ
     function updateClock() {
       const now = new Date();
-      const time = now.toLocaleTimeString();
-      document.getElementById('clock').textContent = time;
+      document.getElementById('clock').textContent = now.toLocaleTimeString();
     }
     setInterval(updateClock, 1000);
     updateClock();
 
     // Lá rơi
-    const leafCount = 25;
     const leavesContainer = document.getElementById('leaves');
-    for (let i = 0; i < leafCount; i++) {
+    for (let i = 0; i < 25; i++) {
       const leaf = document.createElement('div');
       leaf.className = 'leaf';
       leaf.style.left = Math.random() * 100 + 'vw';
