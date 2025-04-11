@@ -1,110 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NguyenHuuTanh Home</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <!-- FPS Counter -->
+        <div class="fps-counter" id="fps">FPS: 0</div>
+
+        <!-- Time Display -->
+        <div class="time-display" id="time"></div>
+
+        <!-- Header -->
         <header>
             <h1>NguyenHuuTanh Home</h1>
-            <div class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </div>
         </header>
-        <div class="profile-section">
-            <div class="profile-image">
-                <img src="profile.jpg" alt="Profile Image">
-                <div class="effect-overlay"></div>
-            </div>
-            <h2>Nguyễn Hữu Tánh <i class="fas fa-check-circle verified"></i></h2>
-            <p class="tagline">Lời nói gió bay, hứa căng hãy chia tay ✌️</p>
+
+        <!-- Profile Section -->
+        <section class="profile">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+            <h2>Nguyễn Hữu Tánh <span class="verified">✔</span></h2>
+            <p class="tagline">Lời nói gió bay, hứa căng hay chia tay</p>
             <div class="info">
-                <p><i class="fas fa-map-marker-alt"></i> Vietnam / Ho Chi Minh City</p>
-                <p><i class="fab fa-github"></i> <a href="https://github.com" target="_blank">My GitHub</a></p>
+                <p>📍 Vietnam / Ho Chi Minh City</p>
+                <p><a href="https://www.facebook.com/yourprofile" target="_blank">My Facebook</a></p>
             </div>
-        </div>
-        <div class="bio-section">
+        </section>
+
+        <!-- Bio Section -->
+        <section class="bio">
             <h3>Bio</h3>
-            <p>Developer / Designer / Vexer</p>
+            <p>Developer / Designer / <span class="highlight">Vexer</span></p>
             <p>Hello, my name is NguyenHuuTanh. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
-        </div>
-        <div class="music-section">
-            <h3>My Favorite Songs</h3>
-            <!-- Thêm trình phát nhạc -->
-            <div class="music-player">
-                <audio id="backgroundMusic" muted>
-                    <source src="hoa-co-lau.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-                <button id="playButton" onclick="togglePlay()">
-                    <i class="fas fa-play"></i> Play Music
-                </button>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills">
+            <h3>Skills</h3>
+            <div class="skill-category">
+                <h4>Web</h4>
+                <div class="skill-list">
+                    <span>Vue.js</span>
+                    <span class="highlight">nuxt.js</span>
+                    <span>Node.js</span>
+                    <span>React.js</span>
+                    <span>TypeScript</span>
+                    <span>JavaScript</span>
+                    <span>CSS</span>
+                    <span>HTML</span>
+                </div>
             </div>
-            <ul class="song-list">
-                <li>
-                    <a href="https://zingmp3.vn/bai-hat/Hoa-Co-Lau-Phong-Max/Z6AIA0I8.html" target="_blank">
-                        Hoa Cỏ Lau - Phong Max
-                    </a>
-                </li>
-                <li>
-                    <a href="https://zingmp3.vn/bai-hat/Khuc-Vuong-Tinh-Remix-Lee-Ken-Can-Vinh/Z6BCCF8F.html" target="_blank">
-                        Khúc Vương Tình (Remix) - Lee Ken, Can Vinh
-                    </a>
-                </li>
-                <li>
-                    <a href="https://zingmp3.vn/bai-hat/Anh-Thuong-Em-Em-Thuong-Ai-Remix-Dinh-Tung-Huy/Z7F8BB6E.html" target="_blank">
-                        Anh Thương Em, Em Thương Ai (Remix) - Đinh Tùng Huy
-                    </a>
-                </li>
-                <li>
-                    <a href="https://zingmp3.vn/bai-hat/Ngay-Em-Cuoi-NMinh-Remix-Nguyen-Vi-Win-Entertainment/Z7IU0WO0.html" target="_blank">
-                        Ngày Em Cưới (NMinh Remix) - Nguyễn Vĩ, Win Entertainment
-                    </a>
-                </li>
-                <li>
-                    <a href="https://zingmp3.vn/bai-hat/Vo-Kich-Cua-Em-Qinn-Remix-Qinn-Media-Ho-Phong-An-DC-Tam/Z70UCOCW.html" target="_blank">
-                        Vở Kịch Của Em (Qinn Remix) - Qinn Media, Hồ Phong An, DC Tâm
-                    </a>
-                </li>
-                <li>
-                    <a href="https://zingmp3.vn/bai-hat/Gio-Remix-JanK-1-9-6-7-N2L/Z6866DDO.html" target="_blank">
-                        Gió (Remix) - JanK, 1-9-6-7, N2L
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <div class="skill-category">
+                <h4>Programming</h4>
+                <div class="skill-list">
+                    <span>Python</span>
+                    <span>PyTorch</span>
+                    <span>C</span>
+                    <span>C++</span>
+                    <span>C#</span>
+                    <span>R</span>
+                    <span>MySQL</span>
+                    <span>PostgreSQL</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>Tools</h4>
+                <div class="skill-list">
+                    <span>VSCode</span>
+                    <span>Vim</span>
+                    <span>Git</span>
+                    <span>Linux</span>
+                    <span>Docker</span>
+                    <span class="highlight">Nginx</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>Design</h4>
+                <div class="skill-list">
+                    <span>Figma</span>
+                    <span>Photoshop</span>
+                    <span>Illustrator</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>Other</h4>
+                <div class="skill-list">
+                    <span>Markdown</span>
+                    <span>LaTeX</span>
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="leaf leaf1"></div>
-    <div class="leaf leaf2"></div>
-    <div class="leaf leaf3"></div>
-    <div class="leaf leaf4"></div>
 
-    <!-- Thêm JavaScript để điều khiển phát nhạc -->
-    <script>
-        const audio = document.getElementById('backgroundMusic');
-        const playButton = document.getElementById('playButton');
-        let isPlaying = false;
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="remix.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-        function togglePlay() {
-            if (isPlaying) {
-                audio.pause();
-                playButton.innerHTML = '<i class="fas fa-play"></i> Play Music';
-            } else {
-                audio.muted = false; // Bật âm thanh khi người dùng nhấp
-                audio.play();
-                playButton.innerHTML = '<i class="fas fa-pause"></i> Pause Music';
-            }
-            isPlaying = !isPlaying;
-        }
-
-        // Tự động phát nhạc (muted) khi trang tải
-        window.onload = function() {
-            audio.play();
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
