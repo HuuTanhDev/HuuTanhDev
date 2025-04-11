@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile của Bạn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Video nền -->
+    <video autoplay muted loop id="background-video">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ video.
+    </video>
+
+    <!-- Lớp phủ để làm mờ video nền -->
+    <div class="overlay"></div>
+
+    <!-- Nội dung chính -->
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/150" alt="Ảnh đại diện" class="avatar">
+            <h1>Nguyễn Văn A</h1>
+            <p>Lập trình viên | Yêu thích công nghệ</p>
+            <!-- Nút điều khiển nhạc -->
+            <button id="toggle-audio" class="audio-btn">Tắt nhạc</button>
+        </header>
+
+        <section class="about">
+            <h2>Giới thiệu</h2>
+            <p>Xin chào! Tôi là một lập trình viên đam mê phát triển web và ứng dụng. Tôi thích học hỏi công nghệ mới và chia sẻ kiến thức với mọi người.</p>
+        </section>
+
+        <section class="skills">
+            <h2>Kỹ năng</h2>
+            <ul>
+                <li>HTML & CSS</li>
+                <li>JavaScript</li>
+                <li>ReactJS</li>
+                <li>Node.js</li>
+            </ul>
+        </section>
+
+        <section class="contact">
+            <h2>Liên hệ</h2>
+            <p>Email: example@email.com</p>
+            <p>Điện thoại: 0123 456 789</p>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Nhạc nền -->
+    <audio id="background-audio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+        Trình duyệt của bạn không hỗ trợ âm thanh.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
