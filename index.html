@@ -1,140 +1,77 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ThanhDieu Home</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #0f0f1a, #1a1a2e);
-      color: white;
-      overflow-x: hidden;
-    }
-
-    .container {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    h1 {
-      color: #c084fc;
-    }
-
-    .avatar {
-      border-radius: 50%;
-      border: 6px solid #8b5cf6;
-      width: 150px;
-      height: 150px;
-      background-image: url('https://via.placeholder.com/150');
-      background-size: cover;
-      background-position: center;
-      margin: 1rem auto;
-    }
-
-    .bio {
-      margin: 2rem auto;
-      padding: 1rem;
-      background: rgba(255,255,255,0.05);
-      border-radius: 10px;
-      max-width: 600px;
-    }
-
-    .clock {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-top: 1rem;
-    }
-
-    .falling-leaves {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .leaf {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Red_Leaf_Icon.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NguyenHuuTanh Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="falling-leaves" id="leaves"></div>
-
-  <div class="container">
-    <h1>ThanhDieu Home</h1>
-    <div class="avatar"></div>
-    <h2>Vuong Thanh Dieu <span style="color: #3b82f6;">✔</span></h2>
-    <p><em>"Lời nói gió bay, hứa càng hay chia tay càng đau..."</em></p>
-    <p>Vietnam / Ho Chi Minh City | <a href="#" style="color: #a5b4fc;">My Github</a></p>
-
-    <div class="bio">
-      <strong>Developer / Designer / <del>Vexer</del></strong>
-      <p>Hello, my name is ThanhDieu. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
+    <div class="container">
+        <header>
+            <h1>NguyenHuuTanh Home</h1>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </header>
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="profile.jpg" alt="Profile Image">
+                <div class="effect-overlay"></div>
+            </div>
+            <h2>Nguyễn Hữu Tánh <i class="fas fa-check-circle verified"></i></h2>
+            <p class="tagline">Lời nói gió bay, hứa căng hãy chia tay ✌️</p>
+            <div class="info">
+                <p><i class="fas fa-map-marker-alt"></i> Vietnam / Ho Chi Minh City</p>
+                <p><i class="fab fa-github"></i> <a href="https://github.com" target="_blank">My GitHub</a></p>
+            </div>
+        </div>
+        <div class="bio-section">
+            <h3>Bio</h3>
+            <p>Developer / Designer / Vexer</p>
+            <p>Hello, my name is NguyenHuuTanh. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
+        </div>
+        <!-- Thêm phần danh sách bài hát -->
+        <div class="music-section">
+            <h3>My Favorite Songs</h3>
+            <ul class="song-list">
+                <li>
+                    <a href="https://zingmp3.vn/bai-hat/Hoa-Co-Lau-Phong-Max/Z6AIA0I8.html" target="_blank">
+                        Hoa Cỏ Lau - Phong Max
+                    </a>
+                </li>
+                <li>
+                    <a href="https://zingmp3.vn/bai-hat/Khuc-Vuong-Tinh-Remix-Lee-Ken-Can-Vinh/Z6BCCF8F.html" target="_blank">
+                        Khúc Vương Tình (Remix) - Lee Ken, Can Vinh
+                    </a>
+                </li>
+                <li>
+                    <a href="https://zingmp3.vn/bai-hat/Anh-Thuong-Em-Em-Thuong-Ai-Remix-Dinh-Tung-Huy/Z7F8BB6E.html" target="_blank">
+                        Anh Thương Em, Em Thương Ai (Remix) - Đinh Tùng Huy
+                    </a>
+                </li>
+                <li>
+                    <a href="https://zingmp3.vn/bai-hat/Ngay-Em-Cuoi-NMinh-Remix-Nguyen-Vi-Win-Entertainment/Z7IU0WO0.html" target="_blank">
+                        Ngày Em Cưới (NMinh Remix) - Nguyễn Vĩ, Win Entertainment
+                    </a>
+                </li>
+                <li>
+                    <a href="https://zingmp3.vn/bai-hat/Vo-Kich-Cua-Em-Qinn-Remix-Qinn-Media-Ho-Phong-An-DC-Tam/Z70UCOCW.html" target="_blank">
+                        Vở Kịch Của Em (Qinn Remix) - Qinn Media, Hồ Phong An, DC Tâm
+                    </a>
+                </li>
+                <li>
+                    <a href="https://zingmp3.vn/bai-hat/Gio-Remix-JanK-1-9-6-7-N2L/Z6866DDO.html" target="_blank">
+                        Gió (Remix) - JanK, 1-9-6-7, N2L
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-
-    <div class="clock" id="clock"></div>
-  </div>
-
-  <!-- MÁY PHÁT NHẠC TỰ ĐỘNG (ẩn) -->
-  <audio id="audio" autoplay loop hidden></audio>
-
-  <script>
-    // Danh sách các bài hát (link MP3 từ zingmp3.vn không thể phát trực tiếp)
-    const playlist = [
-      'https://vnso-zn-5-tf-mp3-s1-zmp3.zmdcdn.me/d191947ab48e1b6c6aafa7eb76c074c8?authen=exp=1712841400~acl=/d191947ab48e1b6c6aafa7eb76c074c8/*~hmac=abc123&filename=Hoa-Co-Lau-Phong-Max.mp3',
-      'https://example.com/khuc-vuong-tinh.mp3',
-      'https://example.com/anh-thuong-em.mp3',
-      'https://example.com/ngay-em-cuoi.mp3',
-      'https://example.com/vo-kich-cua-em.mp3',
-      'https://example.com/gio-remix.mp3'
-    ];
-
-    const audio = document.getElementById('audio');
-    let current = 0;
-
-    function playNext() {
-      audio.src = playlist[current];
-      audio.play().catch(e => console.log("Tự động phát bị chặn:", e));
-      current = (current + 1) % playlist.length;
-    }
-
-    audio.addEventListener('ended', playNext);
-    window.addEventListener('load', playNext);
-
-    // Đồng hồ
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('clock').textContent = now.toLocaleTimeString();
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // Lá rơi
-    const leavesContainer = document.getElementById('leaves');
-    for (let i = 0; i < 25; i++) {
-      const leaf = document.createElement('div');
-      leaf.className = 'leaf';
-      leaf.style.left = Math.random() * 100 + 'vw';
-      leaf.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      leaf.style.top = -Math.random() * 100 + 'px';
-      leavesContainer.appendChild(leaf);
-    }
-  </script>
+    <div class="leaf leaf1"></div>
+    <div class="leaf leaf2"></div>
+    <div class="leaf leaf3"></div>
+    <div class="leaf leaf4"></div>
 </body>
 </html>
