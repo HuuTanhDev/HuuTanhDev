@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,7 +7,6 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom, #0f0f1a, #1a1a2e);
       color: white;
@@ -23,11 +22,6 @@
       color: #c084fc;
     }
 
-    .quote {
-      font-style: italic;
-      margin: 1rem 0;
-    }
-
     .avatar {
       border-radius: 50%;
       border: 6px solid #8b5cf6;
@@ -37,27 +31,20 @@
       background-size: cover;
       background-position: center;
       margin: 1rem auto;
-      box-shadow: 0 0 20px #a78bfa;
-    }
-
-    .info {
-      margin-top: 1rem;
     }
 
     .bio {
-      margin-top: 2rem;
-      background: rgba(255, 255, 255, 0.05);
+      margin: 2rem auto;
       padding: 1rem;
+      background: rgba(255,255,255,0.05);
       border-radius: 10px;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .clock {
-      font-size: 1rem;
-      margin-top: 1rem;
+      font-size: 1.1rem;
       color: #ccc;
+      margin-top: 1rem;
     }
 
     .falling-leaves {
@@ -85,20 +72,26 @@
       }
     }
 
-    .music-section {
-      margin-top: 3rem;
+    .playlist {
+      text-align: left;
+      max-width: 600px;
+      margin: 2rem auto;
+      background: rgba(255,255,255,0.03);
       padding: 1rem;
-    }
-
-    .songs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .song iframe {
       border-radius: 10px;
+    }
+
+    .playlist h3 {
+      text-align: center;
+    }
+
+    .playlist ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .playlist li {
+      padding: 5px 0;
     }
   </style>
 </head>
@@ -109,35 +102,52 @@
     <h1>ThanhDieu Home</h1>
     <div class="avatar"></div>
     <h2>Vuong Thanh Dieu <span style="color: #3b82f6;">✔</span></h2>
-    <p class="quote">"Lời nói gió bay, hứa càng hay chia tay càng đau..."</p>
-    <div class="info">
-      <p>Vietnam / Ho Chi Minh City | <a href="#" style="color: #a5b4fc;">My Github</a></p>
-    </div>
+    <p><em>"Lời nói gió bay, hứa càng hay chia tay càng đau..."</em></p>
+    <p>Vietnam / Ho Chi Minh City | <a href="#" style="color: #a5b4fc;">My Github</a></p>
+
     <div class="bio">
       <strong>Developer / Designer / <del>Vexer</del></strong>
       <p>Hello, my name is ThanhDieu. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
     </div>
+
     <div class="clock" id="clock"></div>
   </div>
 
-  <div class="music-section">
-    <h2>My Playlist</h2>
-    <div class="songs">
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/ktvTqknDobU" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/60ItHLz5WEA" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/fLexgOxsZu0" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/OPf0YbXqDm0" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/RgKAFK5djSk" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/YQHsXMglC9A" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/uelHwf8o7_U" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/JGwWNGJdvx8" allowfullscreen></iframe></div>
-      <div class="song"><iframe width="300" height="170" src="https://www.youtube.com/embed/kXYiU_JCYtU" allowfullscreen></iframe></div>
-    </div>
+  <!-- PLAYLIST -->
+  <div class="playlist">
+    <h3>Danh sách nhạc</h3>
+    <ul>
+      <li>1. Đừng Lo Nhé Có Anh Đây</li>
+      <li>2. Hoa Cỏ Lau</li>
+      <li>3. Yêu Bản Thân</li>
+      <li>4. Lướt Sóng Đạp Mây</li>
+      <li>5. Có Một Người Vẫn Đợi</li>
+      <li>6. Có Duyên Không Nợ</li>
+      <li>7. Khúc Vương Tình</li>
+      <li>8. Kiếp Má Hồng</li>
+      <li>9. Em Vội Quên</li>
+      <li>10. Anh Thương Em Em Thương Ai</li>
+      <li>11. Ngày Em Cưới</li>
+      <li>12. Yêu Và Thương Khó Quá</li>
+      <li>13. Có Lẽ Bên Nhau Là Sai</li>
+      <li>14. Tát Nhật Lãng Rực Rỡ</li>
+      <li>15. Vở Kịch Của Em</li>
+      <li>16. Người Thay Thế Em</li>
+      <li>17. Lý Do Là Gì</li>
+      <li>18. Phận Em Ai Thương Hại</li>
+      <li>19. Ngày Em Đẹp Nhất</li>
+      <li>20. Quá Khứ Anh Không Thể Quên</li>
+    </ul>
   </div>
 
+  <!-- AUTOPLAY MUSIC (link mẫu - bạn có thể thay bằng file MP3 bạn có) -->
+  <audio autoplay loop hidden>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát nhạc.
+  </audio>
+
   <script>
-    // Live clock
+    // Đồng hồ thời gian thực
     function updateClock() {
       const now = new Date();
       const time = now.toLocaleTimeString();
@@ -146,8 +156,8 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Falling leaves
-    const leafCount = 20;
+    // Lá rơi
+    const leafCount = 25;
     const leavesContainer = document.getElementById('leaves');
     for (let i = 0; i < leafCount; i++) {
       const leaf = document.createElement('div');
