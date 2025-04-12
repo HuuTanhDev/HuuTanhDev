@@ -1,146 +1,22 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #1a1a1a;
-    color: #fff;
-    overflow-x: hidden;
+.verified {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #1da1f2; /* Màu xanh lam giống trong hình */
+    border-radius: 50%; /* Hình tròn */
+    position: relative;
+    vertical-align: middle;
+    margin-left: 5px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* FPS Counter */
-.fps-counter {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #ffcc00;
-}
-
-/* Time Display */
-.time-display {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #ffcc00;
-}
-
-/* Play Music Button */
-.play-music-btn {
-    position: fixed;
+.verified::after {
+    content: '';
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px 20px;
-    background: #bb86fc;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.play-music-btn:hover {
-    background: #a56eff;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-header h1 {
-    font-size: 2em;
-    color: #bb86fc;
-}
-
-.profile {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #bb86fc;
-    margin-bottom: 20px;
-}
-
-.profile h2 {
-    font-size: 1.8em;
-    margin: 0;
-}
-
-.verified {
-    color: #03dac6;
-    font-size: 1.2em;
-}
-
-.tagline {
-    font-style: italic;
-    color: #b0b0b0;
-    margin: 10px 0;
-}
-
-.info p {
-    margin: 5px 0;
-}
-
-.info a {
-    color: #bb86fc;
-    text-decoration: none;
-}
-
-.info a:hover {
-    text-decoration: underline;
-}
-
-.bio, .skills {
-    margin-bottom: 40px;
-}
-
-.bio h3, .skills h3 {
-    font-size: 1.5em;
-    border-bottom: 2px solid #bb86fc;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-}
-
-.bio p {
-    margin: 10px 0;
-}
-
-.highlight {
-    color: #ffcc00;
-}
-
-.skill-category {
-    margin-bottom: 20px;
-}
-
-.skill-category h4 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.skill-list span {
-    display: inline-block;
-    background: #333;
-    padding: 5px 10px;
-    border-radius: 15px;
-    margin: 5px;
-    font-size: 0.9em;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: translate(-50%, -60%) rotate(-45deg); /* Tạo dấu tích trắng */
 }
