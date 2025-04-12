@@ -28,4 +28,13 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
-// Autoplay music (already handled in HTML with autoplay attribute)
+// Play Music Function
+function playMusic() {
+    const audio = document.getElementById('background-music');
+    audio.play().then(() => {
+        // Hide the play button after music starts
+        document.querySelector('.play-music-btn').style.display = 'none';
+    }).catch(error => {
+        console.log("Error playing audio:", error);
+    });
+}
