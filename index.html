@@ -3,49 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NguyenHuuTanh Home</title>
+    <title>ThanhDieu Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS gốc của bạn (giả định) và thêm CSS mới cho music control */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #1a1a1a; /* Nền tối */
+            color: #fff; /* Chữ trắng */
+            transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi sáng/tối */
+        }
+
+        body.light-mode {
+            background-color: #f4f4f4; /* Nền sáng */
+            color: #333; /* Chữ đen */
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
 
-        .fps-counter, .time-display {
+        /* FPS Counter */
+        .fps-counter {
             position: fixed;
             top: 10px;
+            right: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 1s; /* Chuyển màu mượt mà */
+        }
+
+        /* Time Display */
+        .time-display {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        body.light-mode .time-display {
             color: #333;
         }
 
-        .fps-counter {
-            left: 10px;
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            left: 60px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #fff;
         }
 
-        .time-display {
-            right: 10px;
+        body.light-mode .theme-toggle {
+            color: #333;
         }
 
+        /* Header */
         header h1 {
-            text-align: center;
-            color: #6200ea;
+            text-align: left;
+            color: #bb86fc; /* Màu tím giống trong hình */
+            font-size: 24px;
         }
 
+        /* Profile Section */
         .profile {
             text-align: center;
+            margin-top: 40px;
         }
 
         .profile-pic {
             border-radius: 50%;
             margin-bottom: 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 5px solid transparent;
+            background: linear-gradient(45deg, #03dac6, #bb86fc); /* Hiệu ứng ánh sáng gradient */
+            padding: 5px;
+            border-radius: 50%;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px #03dac6, 0 0 20px #bb86fc;
+            }
+            100% {
+                box-shadow: 0 0 20px #03dac6, 0 0 40px #bb86fc;
+            }
         }
 
         .verified {
@@ -54,38 +107,79 @@
 
         .tagline {
             font-style: italic;
-            color: #555;
+            color: #aaa;
+            margin: 10px 0;
         }
 
         .info p {
             margin: 5px 0;
+            color: #ccc;
         }
 
+        .info a {
+            color: #bb86fc;
+            text-decoration: none;
+        }
+
+        .info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Bio Section */
         .bio, .skills {
             margin-top: 20px;
         }
 
         .bio h3, .skills h3 {
-            color: #6200ea;
+            color: #bb86fc;
         }
 
         .highlight {
             color: #b000b5;
         }
 
+        /* Skills Section */
         .skill-category {
             margin-bottom: 15px;
         }
 
         .skill-list span {
             display: inline-block;
-            background-color: #e0e0e0;
+            background-color: #333;
             padding: 5px 10px;
             margin: 5px;
             border-radius: 5px;
+            color: #fff;
         }
 
-        /* CSS cho nút điều khiển nhạc */
+        body.light-mode .skill-list span {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        /* Falling Leaves Effect */
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://via.placeholder.com/20/ffa500/000000?text=🍁') no-repeat center;
+            background-size: contain;
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Music Control Button */
         .music-control {
             position: fixed;
             bottom: 20px;
@@ -100,7 +194,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            display: none; /* Ẩn nút ban đầu, chỉ hiển thị khi cần */
+            display: none;
         }
 
         #music-toggle-btn:hover {
@@ -110,25 +204,28 @@
 </head>
 <body>
     <div class="container">
-        <!-- FPS Counter -->
-        <div class="fps-counter" id="fps">FPS: 0</div>
-
         <!-- Time Display -->
         <div class="time-display" id="time"></div>
 
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="theme-toggle">🌙</button>
+
+        <!-- FPS Counter -->
+        <div class="fps-counter" id="fps">FPS: 0</div>
+
         <!-- Header -->
         <header>
-            <h1>NguyenHuuTanh Home</h1>
+            <h1>HuuTanh Home</h1>
         </header>
 
         <!-- Profile Section -->
         <section class="profile">
             <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
-            <h2>Nguyễn Hữu Tánh <span class="verified">✔</span></h2>
+            <h2>Nguyen Huu Tanh <span class="verified">✔</span></h2>
             <p class="tagline">Lời nói gió bay, hứa căng hay chia tay</p>
             <div class="info">
-                <p>📍 Vietnam / Ho Chi Minh City</p>
-                <p><a href="https://www.facebook.com/yourprofile" target="_blank">My Facebook</a></p>
+                <p>📍 Vietnam / Dong Thap</p>
+                <p><a href="https://github.com/yourprofile" target="_blank">My GitHub</a></p>
             </div>
         </section>
 
@@ -136,7 +233,7 @@
         <section class="bio">
             <h3>Bio</h3>
             <p>Developer / Designer / <span class="highlight">Vexer</span></p>
-            <p>Hello, my name is NguyenHuuTanh. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
+            <p>Hello, my name is ThanhDieu. I am a member of WusTeam and a freelance programmer, with a passion for coding driven by pure interest.</p>
         </section>
 
         <!-- Skills Section -->
@@ -211,40 +308,93 @@
     <script>
         const music = document.getElementById('background-music');
         const toggleButton = document.getElementById('music-toggle-btn');
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
 
-        // Function to toggle music play/pause
+        // Toggle Music
         function toggleMusic() {
             if (music.paused) {
                 music.play().then(() => {
                     toggleButton.textContent = 'Pause Music';
-                }).catch(() => {
-                    // Handle errors if play fails
-                });
+                }).catch(() => {});
             } else {
                 music.pause();
                 toggleButton.textContent = 'Play Music';
             }
         }
 
-        // Try to play music automatically on page load
         document.addEventListener('DOMContentLoaded', () => {
             music.play().catch(() => {
-                // If autoplay is blocked, show the toggle button
                 toggleButton.style.display = 'inline-block';
             });
         });
 
-        // Play music on first user interaction (click anywhere)
         document.addEventListener('click', () => {
             if (music.paused) {
                 music.play().then(() => {
                     toggleButton.textContent = 'Pause Music';
                     toggleButton.style.display = 'inline-block';
-                }).catch(() => {
-                    // Handle errors if play fails
-                });
+                }).catch(() => {});
             }
-        }, { once: true }); // Only trigger once
+        }, { once: true });
+
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            themeToggle.textContent = body.classList.contains('light-mode') ? '🌙' : '☀️';
+        });
+
+        // Time Display
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // FPS Counter with Color Cycling
+        let frameCount = 0;
+        let lastTime = performance.now();
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffffff'];
+        let colorIndex = 0;
+
+        function updateFPS() {
+            frameCount++;
+            const currentTime = performance.now();
+            const deltaTime = (currentTime - lastTime) / 1000;
+
+            if (deltaTime >= 1) {
+                const fps = Math.round(frameCount / deltaTime);
+                const fpsDisplay = document.getElementById('fps');
+                fpsDisplay.textContent = `FPS: ${fps}`;
+                fpsDisplay.style.color = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+                frameCount = 0;
+                lastTime = currentTime;
+            }
+
+            requestAnimationFrame(updateFPS);
+        }
+        requestAnimationFrame(updateFPS);
+
+        // Falling Leaves Effect
+        function createLeaf() {
+            const leaf = document.createElement('div');
+            leaf.classList.add('leaf');
+            leaf.style.left = `${Math.random() * 100}vw`;
+            leaf.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            leaf.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(leaf);
+
+            setTimeout(() => {
+                leaf.remove();
+            }, 10000);
+        }
+
+        setInterval(createLeaf, 500);
     </script>
 </body>
 </html>
