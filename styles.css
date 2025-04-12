@@ -37,6 +37,25 @@ body {
     color: #ffcc00;
 }
 
+/* Play Music Button */
+.play-music-btn {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    background: #bb86fc;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.play-music-btn:hover {
+    background: #a56eff;
+}
+
 header {
     text-align: center;
     margin-bottom: 40px;
