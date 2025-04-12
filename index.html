@@ -105,9 +105,23 @@
             display: inline-block;
             width: 20px;
             height: 20px;
-            background: url('https://via.placeholder.com/20/1da1f2/000000?text=✔') no-repeat center;
-            background-size: contain;
+            background-color: #1da1f2; /* Màu xanh lam giống trong hình */
+            border-radius: 50%; /* Hình tròn */
+            position: relative;
             vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        .verified::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 5px;
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: translate(-50%, -60%) rotate(-45deg); /* Tạo dấu tích trắng */
         }
 
         .tagline {
@@ -230,7 +244,7 @@
             <p class="tagline">Lời nói gió bay, hứa căng hay chia tay</p>
             <div class="info">
                 <p>📍 Vietnam / Dong Thap</p>
-                <p><a href="https://www.facebook.com/yourprofile" target="_blank">My Facebook</a></p>
+                <p><a href="https://www.facebook.com/share/15nA5dZaXy/?mibextid=wwXIfr" target="_blank">My Facebook</a></p>
             </div>
         </section>
 
