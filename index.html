@@ -4,8 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NguyenHuuTanh Home</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS gốc của bạn (giả định) và thêm CSS mới cho music control */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .fps-counter, .time-display {
+            position: fixed;
+            top: 10px;
+            color: #333;
+        }
+
+        .fps-counter {
+            left: 10px;
+        }
+
+        .time-display {
+            right: 10px;
+        }
+
+        header h1 {
+            text-align: center;
+            color: #6200ea;
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .verified {
+            color: #1da1f2;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #555;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        .bio, .skills {
+            margin-top: 20px;
+        }
+
+        .bio h3, .skills h3 {
+            color: #6200ea;
+        }
+
+        .highlight {
+            color: #b000b5;
+        }
+
+        .skill-category {
+            margin-bottom: 15px;
+        }
+
+        .skill-list span {
+            display: inline-block;
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        /* CSS cho nút điều khiển nhạc */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        #music-toggle-btn {
+            padding: 10px 20px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none; /* Ẩn nút ban đầu, chỉ hiển thị khi cần */
+        }
+
+        #music-toggle-btn:hover {
+            background-color: #3700b3;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -97,34 +198,53 @@
     </div>
 
     <!-- Background Music -->
-    <audio id="background-music" autoplay loop>
+    <audio id="background-music" loop>
         <source src="remix.mp3" type="audio/mpeg">
         Trình duyệt của bạn không hỗ trợ phát nhạc.
     </audio>
 
-    <!-- Button to allow autoplay if blocked -->
-    <button id="play-music-btn" onclick="playMusic()">Play Music</button>
+    <!-- Music Control Button -->
+    <div class="music-control">
+        <button id="music-toggle-btn" onclick="toggleMusic()">Play Music</button>
+    </div>
 
     <script>
-        // Function to play music manually if autoplay is blocked
-        function playMusic() {
-            const music = document.getElementById('background-music');
-            const playButton = document.getElementById('play-music-btn');
-            
+        const music = document.getElementById('background-music');
+        const toggleButton = document.getElementById('music-toggle-btn');
+
+        // Function to toggle music play/pause
+        function toggleMusic() {
             if (music.paused) {
-                music.play();
-                playButton.style.display = 'none'; // Hide play button after music starts
+                music.play().then(() => {
+                    toggleButton.textContent = 'Pause Music';
+                }).catch(() => {
+                    // Handle errors if play fails
+                });
+            } else {
+                music.pause();
+                toggleButton.textContent = 'Play Music';
             }
         }
 
-        // Try playing the music automatically
-        const music = document.getElementById('background-music');
-        music.play().catch(function(error) {
-            // If autoplay is blocked, show the play button
-            const playButton = document.getElementById('play-music-btn');
-            playButton.style.display = 'inline-block';
+        // Try to play music automatically on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            music.play().catch(() => {
+                // If autoplay is blocked, show the toggle button
+                toggleButton.style.display = 'inline-block';
+            });
         });
-    </script>
 
+        // Play music on first user interaction (click anywhere)
+        document.addEventListener('click', () => {
+            if (music.paused) {
+                music.play().then(() => {
+                    toggleButton.textContent = 'Pause Music';
+                    toggleButton.style.display = 'inline-block';
+                }).catch(() => {
+                    // Handle errors if play fails
+                });
+            }
+        }, { once: true }); // Only trigger once
+    </script>
 </body>
 </html>
